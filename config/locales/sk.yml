@@ -17,7 +17,7 @@ sk:
             no_items_yet: Zatiaľ neboli pridané žiadne záznamy. Klikni "Pridať nový banner" pre pridanie prvého.
           banner:
             view_live_html: Zobraziť baner<br/><em>(otvorí sa v novom okne)</em>
-            edit: Upraviť tento album
+            edit: Upraviť tento baner
             delete: Zmazať tento baner
       banners:
         show:
