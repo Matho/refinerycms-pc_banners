@@ -3,9 +3,6 @@ module Refinery
     class Banner < Refinery::Core::BaseModel
       self.table_name = 'refinery_banners'
 
-      acts_as_indexed :fields => [:name, :url, :title, :description]
-
-      attr_accessible :name, :title, :description, :image_id, :url, :is_active, :start_date, :expiry_date, :position, :page_ids
 
       validates :name, :presence => true
       validates_presence_of :start_date
@@ -19,7 +16,7 @@ module Refinery
         banners = Arel::Table.new(::Refinery::Banners::Banner.table_name)
         where(banners[:expiry_date].eq(nil).or(banners[:expiry_date].gt(Time.now)))
       }
-      scope :active, where(:is_active => true)
+      scope :active, -> {where(:is_active => true) }
       scope :published, lambda {
         not_expired.active.where("start_date <= ?", Time.now).order(:position)
       }
